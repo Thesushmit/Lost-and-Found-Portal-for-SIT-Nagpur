@@ -3,12 +3,14 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Badge, Button, Spinner, Alert, Modal, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
+import { useNotifications } from '../context/NotificationContext';
 import api from '../api/axios';
 
 const ItemDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { user } = useAuth();
+    const { addNotification } = useNotifications();
     
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -57,6 +59,14 @@ const ItemDetail = () => {
         try {
             await api.put(`/items/${id}`, { status: newStatus });
             fetchItemDetails(); // Refresh to get updated data
+            
+            // Add notification
+            addNotification({
+                type: 'status',
+                title: 'Status Updated!',
+                message: `Item "${item.itemName}" status changed to ${newStatus.toUpperCase()}.`
+            });
+            
             toast.success(`Status updated to ${newStatus}`);
         } catch (err) {
             toast.error('Failed to update status');
@@ -102,6 +112,14 @@ const ItemDetail = () => {
             setClaiming(true);
             const res = await api.post(`/items/${id}/claim`, claimData);
             setItem(res.data.item);
+            
+            // Add notification
+            addNotification({
+                type: 'claim',
+                title: 'Claim Request Submitted!',
+                message: `Your claim for "${item.itemName}" has been submitted. Visit ${item.depositLocation} with your ID.`
+            });
+            
             toast.success('🎉 Claim request submitted successfully! Please visit the deposit location with your ID.');
             setShowClaimModal(false);
         } catch (err) {

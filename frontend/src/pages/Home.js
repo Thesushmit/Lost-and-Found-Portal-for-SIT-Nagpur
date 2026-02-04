@@ -341,14 +341,14 @@ const Home = () => {
             <footer className="home-footer">
                 <Container>
                     <Row>
-                        <Col md={4} className="mb-4 mb-md-0">
+                        <Col lg={3} md={6} className="mb-4 mb-lg-0">
                             <h5>
                                 <i className="bi bi-search-heart me-2"></i>
                                 Lost & Found Portal
                             </h5>
                             <p className="text-muted">Helping reunite lost items with their owners since 2024.</p>
                         </Col>
-                        <Col md={4} className="mb-4 mb-md-0">
+                        <Col lg={3} md={6} className="mb-4 mb-lg-0">
                             <h5>Quick Links</h5>
                             <ul className="footer-links">
                                 <li><Link to="/home">Home</Link></li>
@@ -356,21 +356,45 @@ const Home = () => {
                                 <li><Link to="/my-items">My Items</Link></li>
                             </ul>
                         </Col>
-                        <Col md={4}>
+                        <Col lg={3} md={6} className="mb-4 mb-lg-0">
                             <h5>Contact</h5>
                             <p className="text-muted">
                                 <i className="bi bi-building me-2"></i>
                                 Symbiosis Institute of Technology, Nagpur
                             </p>
                             <p className="text-muted">
-                                <i className="bi bi-envelope me-2"></i>
-                                lostandfound@sit.edu
+                                <i className="bi bi-person me-2"></i>
+                                Sharvayu Zade
                             </p>
+                            <p className="text-muted">
+                                <i className="bi bi-envelope me-2"></i>
+                                <a href="mailto:sharvayu.zade@gmail.com" className="footer-email">sharvayu.zade@gmail.com</a>
+                            </p>
+                        </Col>
+                        <Col lg={3} md={6}>
+                            <h5>
+                                <i className="bi bi-code-slash me-2"></i>
+                                Creators
+                            </h5>
+                            <ul className="creators-list">
+                                <li>
+                                    <i className="bi bi-person-badge me-2"></i>
+                                    Sharvayu Zade
+                                </li>
+                                <li>
+                                    <i className="bi bi-person-badge me-2"></i>
+                                    Sushmit Partakke
+                                </li>
+                                <li>
+                                    <i className="bi bi-person-badge me-2"></i>
+                                    Sharvil Barhanpure
+                                </li>
+                            </ul>
                         </Col>
                     </Row>
                     <hr />
                     <p className="text-center text-muted mb-0">
-                        © 2024 Lost & Found Portal. Made with ❤️ for SIT Nagpur
+                        © 2024 Lost & Found Portal. Made with ❤️ by Sharvayu, Sushmit & Sharvil for SIT Nagpur
                     </p>
                 </Container>
             </footer>
